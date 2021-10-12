@@ -17,4 +17,5 @@ The parts of the project were built gradually, "growing on layers" and can be ro
 1. Write FMI data load script
 2. Write ingestion API using FastAPI framework
 3. Test it with Postman
-4. Add kafka into the picture: add 
+4. Add kafka into the picture: kafka runs on container and we add production of kafka strings to ingestion API code. Create local producer and consumer. Test new setup with Postman.
+6. Containerize Ingestion API app and test pipeline with Postman.
