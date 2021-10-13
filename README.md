@@ -12,6 +12,8 @@ This project has several goals:
 7. Overarching purpose - containerize everything down the pipeline starting from ingestion app
 
 All scripts are writen in Python.
+Diagram:
+![diagram](./pipeline_diagram.jpg)
 
 ## Steps to create pipeline
 
