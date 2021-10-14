@@ -2,6 +2,8 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 import pymongo
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 client= pymongo.MongoClient("mongodb://localhost:27017/", username='root', password='example')
 db = client["fmi"]
@@ -30,12 +32,22 @@ if station_id and parameter_id:
         if a_parameter != parameter_id:
             exclude_dict[a_parameter]=0
     doc = col.find(query,exclude_dict) # query MondoDB
-
+  
     df = pd.DataFrame(doc)
-    print(df)
-    st.header("Output")
+
+    # Plotting sequence
+    fig1, ax = plt.subplots()
+    fig1.set_figwidth(10)
+    times = pd.to_datetime(df['time_UTC'])
+
     try: #if there are valid measurements
-        graph1 = st.line_chart(data=df[parameter_id])
+        ax.plot(times,df[parameter_id].astype(float))
+        ax.set_xlabel('time_UTC ')
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%H-%M'))
+        ax.set_ylabel(parameter_id)
+
+        st.header("Output")
+        graph1 = st.pyplot(fig=fig1)
     except KeyError: #if not measurements available, display message
         st.text("No measurements available")
     
