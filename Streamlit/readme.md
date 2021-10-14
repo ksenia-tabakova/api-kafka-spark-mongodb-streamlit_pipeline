@@ -6,4 +6,4 @@ I didn't invest much time into studying in detail various abilities of Streamlit
 [Python script](https://github.com/ksenia-tabakova/api-kafka-spark-mongodb-streamlit_pipeline/blob/main/Streamlit/streamlit-app.py)
 
 Example of UI:
-![streamlit example](./streamlit-screenshot.png)
+![streamlit example](./streamlit-app-screenshot.png)
